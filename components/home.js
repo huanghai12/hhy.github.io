@@ -12,9 +12,10 @@ export default function Home(props){
     const setImg_arr1 = props.setImg_arr1, setImg_arr2 = props.setImg_arr2, setImg_arr3 = props.setImg_arr3, setImg_arr4 = props.setImg_arr4;
     // 页脚切换事件
     const [img_arr, setImg_arr] = useState( [
-        {id: 1, name: "video", url1: '1', url2: "1_1", add: true},
-        {id: 2, name: "home", url1: '2', url2: "2_1", add: true},
-        {id: 3, name: "details", url1: '3', url2: "3_1", add: true},
+        {id: 1, name: "he1",page_type: "", url1: '1', url2: "1_1", add: true},
+        {id: 2, name: "SortableJS", page_type: "chrome", url1: '2', url2: "2_1", add: true},
+        {id: 3, name: "SCADA1",page_type: "", url1: '3', url2: "3_1", add: true},
+        {id: 4, name: "he2", page_type: "",url1: '4', url2: "4_1", add: true},
     ])
      // 显示屏列表
      const [video_list, setVideo_list] = useState([
@@ -25,7 +26,6 @@ export default function Home(props){
      ])
     // 显示屏左侧图标列表1
     function change_page1(id1, item){
-       
         var arr = arrs(id1);
         const id2 = item.id;
         if(item.select == true){ return}
@@ -33,7 +33,7 @@ export default function Home(props){
             items1.select = false;
             if(items1.id == id2 && items1.select == false){
                 items1.select = true;
-                items1.level = 0;
+                items1.level = arr.length + 1;
                 if(items1.page_type != "chrome"){
                     items1.maxs = true;
                     change_icon(items1,id1);//展开图标的切换
@@ -155,7 +155,7 @@ export default function Home(props){
                     }
                 })
                 // 如果是显示屏之间互相拖拽
-                let move_item = {id: target_id, ids: target_id,select: true,level: 0,maxs: true};
+                let move_item = {id: target_id, ids: target_id,select: true,level: arr1.length+1,maxs: true};
                 if(id && item.id != id){
                     let list2 = arrs (id);
                     list2.map((item2,index2)=>{
@@ -231,46 +231,29 @@ export default function Home(props){
         arr.forEach((element)=>{
             arr_num.push(element.level);
         })
-        
-        arr.map((item)=>{
-            // 新增状态
-            if(item.level == -1){ return};
-            if( arr.length == 1){
-                item.level = 1;
-                item.select = true;
-            }else if( arr.length == 2 ){
-                if(item.id == id){
-                    item.level = 2;
-                    item.select = true;
-                }else{
-                    item.level = 1;
-                }
-            }else if( arr.length == 3){
-                const ones = _.find(arr, { level: 1 });
-                if(!ones && item.level == 2){ item.level = 1}
-                if(item.level == 3){item.level = 2}
-                if(item.id == id){
-                    item.level = 3;
-                    item.select = true;
-                }
-            }
+        arr_num.sort();
+        arr.forEach((element) => {
+            const level = _.sortedIndexOf(arr_num, element.level);
+            element.level = level + 1;
+            if(element.id == id){ element.select = true}
         });
         return arr;
     }
     // 添加一个窗口：通过窗口名获取句柄、窗口正常化、窗口置前
     function hand1_fun(target_id,arr1,item,id,old_id){
-        const url_arr = [
-            {id: 1, name: "he1",page_type: ""},
-            {id: 2, name: "SortableJS",page_type: "chrome"},
-            {id: 3, name: "SCADA1",page_type: "app"},
-        ]
-        let url = url_arr[target_id - 1].name;
-        item.page_type = url_arr[target_id - 1].page_type;
+        // const url_arr = [
+        //     {id: 1, name: "he1",page_type: ""},
+        //     {id: 2, name: "SortableJS",page_type: "chrome"},
+        //     {id: 3, name: "SCADA1",page_type: "app"},
+        // ]
+        let url = img_arr[target_id - 1].name;
+        // item.page_type = img_arr[target_id - 1].page_type;
         return handle1(url,item,id,old_id).then(res => {
-            arr1[arr1.length - 1].hwnd = res.data.hwnd_v[0];
-            arr1[arr1.length - 1].page_type = url_arr[target_id - 1].page_type;
+            let item1 = arr1[arr1.length - 1];
+            item1.hwnd = res.data.hwnd_v[0];
+            // arr1[arr1.length - 1].page_type = url_arr[target_id - 1].page_type;
             // set_arrs(item.id,arr1);//保存数组渲染到页面
-            return arr1[arr1.length - 1];
+            return item1;
         })
     }
     // 窗口置前
