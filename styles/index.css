@@ -1,0 +1,78 @@
+html,body,#root,div{
+    padding: 0;
+    margin: 0;
+}
+@media screen and (min-width: 768px) {
+    html,body,#root{
+        font-size: 8px;
+    }
+}
+@media screen and (min-width: 1920px) {
+    html,body,#root{
+        font-size: 12px;
+    }
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+.bodys{
+    width: 100%;
+    height: calc(100vh);
+    background-size: 100% 100%;
+    position: relative;
+}
+.con_header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3.83rem;
+}
+.con_header>div{
+    /* background-image: url("../public/logo_bg.png"); */
+    background-size: 100% 100%;
+    height: 8.67rem;
+    width: 102.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.con_header>div>img{
+    height: 8.08rem;
+    width: 41.92rem;
+}
+
+
+
+/* 轮播图样式 */
+:where(.css-dev-only-do-not-override-htwhyh).ant-carousel .slick-dots-top{
+    top: -3.75rem;
+
+}
+:where(.css-dev-only-do-not-override-htwhyh).ant-carousel .slick-dots li button{
+    width: 1.33rem;
+    height: 1.33rem;
+    border-radius: 1.33rem;
+}
+/* 轮播图样式 */
+ .carousel{
+    height: calc(100% - 12.5rem);
+}
+.swiper {
+    width: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .swiper-scrollbar{
+    background: rgba(255,255,255,0.1) !important;
+  }
+  .swiper-scrollbar-drag{
+    background: rgba(255,255,255,0.5) !important;
+
+  }

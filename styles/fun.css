@@ -1,0 +1,21 @@
+.funs_page{
+    width: 143.31rem;
+    background: rgba(255,255,255,0.12);
+    border: 0.08px solid #5E6780;
+    box-shadow: 0rem 1rem 2rem 0rem rgba(0,0,0,0.12);
+    border-radius: 0.83rem;
+    padding: 6.25rem;
+    margin: 0 8.25rem 2rem 8.25rem;
+    height: calc(100vh - 35rem);
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 2.79rem;
+}
+.funs_box{
+    display: flex;
+    justify-content: center;
+}
+.funs_page>img{
+    width: 6.92rem;
+    height: 6.92rem;
+}

@@ -1,0 +1,84 @@
+import instance from "./config";
+import Cookies from "js-cookie";
+// 异步
+export function promise_get(url, params){
+    return new Promise((resolve,reject)=>{
+        instance.get(url,{params}).then((res)=>{
+            resolve(res.data);
+        }).catch(error => {
+            reject(error)
+        })
+    })
+}
+export function promise_post(url, params){
+    return new Promise((resolve,reject)=>{
+        instance.post(url,{params}).then((res)=>{
+            resolve(res);
+        }).catch(error => {
+            reject(error)
+        })
+    })
+}
+
+// 登录
+export function Logins (obj){
+    const value = obj.password;
+    if(obj.password == "yikun606"){
+        Cookies.set("password",value);
+        return 200;
+    }else{
+        return 400;
+    }
+}
+// 急停
+export function robot_stop(){
+    const url = "screen/robot_stop";
+    const params = {}
+    return instance.post(url,params)
+}
+
+// 最大化窗口
+export function maximize(item,id){
+    const url = "screen/maximize";
+    const params = {maxs: item.maxs,hwnd: item.hwnd,page_type: item.page_type,id: id};
+   return instance.post(url,params);
+}
+// 根据窗体名获取窗体句柄,置前，正常化
+export function handle1(name,item,id,old_id){
+    const url = "screen/handle1";
+    const params = {name,item,id,old_id};
+    return instance.post(url,params)
+}
+// 窗口置前
+export function front1(hwnd){
+    const url = "screen/front1";
+    const params = {hwnd};
+    return instance.post(url,params)
+}
+// 最小化窗口
+export function minimize(item){
+    const url = "screen/minimize";
+    const params = item;
+   return instance.post(url,params);
+}
+// 正常化窗口
+
+export function normalize(item,id){
+    const url = "screen/normalize";
+    const params = {item: item,id: id};
+   return instance.post(url,params);
+}
+// 点击正常化窗口
+
+export function normalize_click(item,id){
+    const url = "screen/normalize_click";
+    const params = {item: item,id: id};
+   return instance.post(url,params);
+}
+
+// 移动窗口
+export function moves(objs){
+    const url = "screen/move_to";
+    const params = objs;
+    return instance.post(url,params);
+}
