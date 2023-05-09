@@ -1,5 +1,4 @@
 import instance from "./config";
-import Cookies from "js-cookie";
 // 异步
 export function promise_get(url, params){
     return new Promise((resolve,reject)=>{
@@ -18,13 +17,12 @@ export function promise_post(url, params){
             reject(error)
         })
     })
-}
+};
 
 // 登录
-export function Logins (obj){
-    const value = obj.password;
-    if(obj.password == "yikun606"){
-        Cookies.set("password",value);
+ export async function Logins (password){
+   console.log("password",password)
+    if(password == "yikun606"){
         return 200;
     }else{
         return 400;

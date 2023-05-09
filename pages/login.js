@@ -1,10 +1,13 @@
 import { Logins } from "./api/requst";
-import {useState } from 'react'
-export default function Login(){
-    function logins(){
-        const login1 = Logins({password: pass});
+import {useState } from 'react';
+import Router from 'next/router';
+export default function Login(props){
+    const Cookies = props.Cookies;
+   async function logins(){
+        const login1 = await Logins(pass);
         if(login1 == 200){
-            window.location.href="/";
+            Cookies.set("user","yikun",{ expires: 1,path:'/' });
+            Router.push("/");
         }else{
             console.log("登录失败")
         }
@@ -19,7 +22,8 @@ export default function Login(){
                         <img src="/login_pass.png" alt="" />
                         <input value={pass} onChange={(event)=>{setpass(event.target.value)}} type="text" placeholder="请输入密码" />
                     </div>
-                    <button onClick={logins} className="login_btn">登录</button>
+                    {/* <button onClick={()=>{signIn(pass)}} className="login_btn">登录</button> */}
+                    <button onClick={()=>{logins(pass)}} className="login_btn">登录</button>
                 </div>
             </div>
         {/* <input value={pass} onChange={(event: any)=>{setpass(event.target.value)}} type="text" />
