@@ -1,0 +1,17 @@
+#tip_main{
+    z-index: 99999;
+    color: #FFF;
+    position: absolute;
+    top: 0;
+    right: 0rem;
+    padding: 0 2rem;
+    font-size: 2rem;
+}
+#tip_main>p{
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: rgba(0,174,255,0.12);
+    border: 1px solid rgba(0,174,255,0.5);
+}
+/* background: rgba(14,51,92,0.4); */
+/* border: 1px solid #78F0FD; */

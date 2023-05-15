@@ -23,16 +23,16 @@
     height: 25.11rem;
     background: #FFFFFF;
     border-radius: 0.83rem;
-    padding: 4rem 7rem;
+    padding: 4.83rem 7rem 3.67rem 7rem;
 }
 .welcome_text{
     font-size: 2.67rem;
     font-family: Source Han Sans CN;
     font-weight: bold;
     color: #333333;
-    line-height: 6.01rem;
+    /* line-height: 6.01rem; */
     text-align: center;
-    margin-bottom: 3.5rem;
+    margin-bottom: 4.67rem;
 }
 .inputs{
     width: 34.73rem;
@@ -40,7 +40,7 @@
     background: #FAFAFA;
     border: 1px solid #E6E6E6;
     border-radius: 0.42rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 4.67rem;
     display: flex;
     align-items:center;
     padding: 0.5rem 0.5rem;

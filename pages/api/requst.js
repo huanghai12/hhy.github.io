@@ -12,16 +12,14 @@ export function promise_get(url, params){
 export function promise_post(url, params){
     return new Promise((resolve,reject)=>{
         instance.post(url,{params}).then((res)=>{
-            resolve(res);
+            resolve(res.data);
         }).catch(error => {
             reject(error)
         })
     })
 };
-
 // 登录
  export async function Logins (password){
-   console.log("password",password)
     if(password == "yikun606"){
         return 200;
     }else{
@@ -34,7 +32,6 @@ export function robot_stop(){
     const params = {}
     return instance.post(url,params)
 }
-
 // 最大化窗口
 export function maximize(item,id){
     const url = "screen/maximize";
@@ -42,9 +39,9 @@ export function maximize(item,id){
    return instance.post(url,params);
 }
 // 根据窗体名获取窗体句柄,置前，正常化
-export function handle1(name,item,id,old_id){
+export function handle1(name,item,id){
     const url = "screen/handle1";
-    const params = {name,item,id,old_id};
+    const params = {name,item,id};
     return instance.post(url,params)
 }
 // 窗口置前
@@ -78,5 +75,23 @@ export function normalize_click(item,id){
 export function moves(objs){
     const url = "screen/move_to";
     const params = objs;
+    return instance.post(url,params);
+}
+// 环视
+export function around_open(obj){
+    const url = "screen/around_open";
+    const params = obj;
+    return instance.post(url,params);
+}
+// 停止环视功能
+export function around_stop(obj){
+    const url = "screen/around_close";
+    const params = obj;
+    return instance.post(url,params);
+}
+// 状态查询
+export function all_status(arr){
+    const url = "screen/all_status";
+    const params = arr;
     return instance.post(url,params);
 }

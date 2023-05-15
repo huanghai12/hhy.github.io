@@ -2,7 +2,8 @@
 import '/styles/index.css';
 import '/styles/home.css';
 import '/styles/fun.css';
-import '/styles/login.css'
+import '/styles/login.css';
+import '/styles/tip.css';
 import Head from "next/head";
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
@@ -14,7 +15,6 @@ export default function App({ Component, pageProps }) {
     // 检查登录状态
       const user = Cookies.get("user");
       if(!user){ Router.push('/login')};
-      console.log(Cookies)
       // 全屏页面
         if (document.body.webkitRequestFullScreen) {
           let click_nums = 0;

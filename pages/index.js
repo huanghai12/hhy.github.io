@@ -1,40 +1,40 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useRef } from 'react';
 import Home from '../components/home';
 import Funs from '../components/fun';
-import { Swiper, SwiperSlide, } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import {  Scrollbar } from "swiper";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-
+import Tips from '../components/tip'
 export default function IndexPage({Cookies}) {
-  const [img_arr1, setImg_arr1] = useState([
-  ]);
-  // 显示屏左侧图标列表2
-  const [img_arr2, setImg_arr2] = useState([]);
-   // 显示屏左侧图标列表3
-   const [img_arr3, setImg_arr3] = useState([]);
-   // 显示屏左侧图标列表4
-   const [img_arr4, setImg_arr4] = useState([]);
+  const ref = useRef(null);
+   const [video_list, setVideo_list] = useState([
+    {id: 1, name: "屏1",arrs:[]},
+    {id: 2, name: "屏2",arrs:[]},
+    {id: 3, name: "屏3",arrs:[]},
+    {id: 4, name: "屏4",arrs:[]},
+ ])
   return (
     <div className='bodys' style={{backgroundImage: "url('/bg.png')"}} >
+      {/* <Tips ref={c => window.Tips = c} /> */}
+      <Tips ref={ref} />
       <div className='con_header'>
         <div style={{backgroundImage: "url('/logo_bg.png')"}}>
           <img src="/logo.png" alt="" />
         </div>
       </div>
+      {/* <div style={{background: "#FFF"}} onClick={()=>{ clickme()}}>点击我弹出弹窗</div> */}
       <Swiper className='carousel' 
       scrollbar={{
         hide: true,
       }}
       modules={[Scrollbar]}
-      // className="mySwiper" 
-      // modules={[Pagination]}
       >
         <SwiperSlide >
           <Home 
-          img_arr1={img_arr1} img_arr2={img_arr2} img_arr3={img_arr3} img_arr4={img_arr4}
-          setImg_arr1={setImg_arr1} setImg_arr2={setImg_arr2} setImg_arr3={setImg_arr3} setImg_arr4={setImg_arr4}
+          video_list={video_list}
+          setVideo_list={setVideo_list}
           ></Home>
         </SwiperSlide>
         <SwiperSlide>
