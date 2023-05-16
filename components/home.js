@@ -12,18 +12,19 @@ export default function Home(props){
     const video_list = props.video_list, setVideo_list = props.setVideo_list;
     // 页脚切换事件
     const [img_arr, setImg_arr] = useState( [
-        {id: 1, name: "he1",page_type: "", url1: '1', url2: "1_1", add: true},
-        {id: 2, name: "SortableJS", page_type: "chrome", url1: '2', url2: "2_1", add: true},
-        {id: 3, name: "SCADA1",page_type: "", url1: '3', url2: "3_1", add: true},
-        {id: 4, name: "he2", page_type: "",url1: '4', url2: "4_1", add: true},
+        {id: 1, name: "he3",page_type: "", url1: '1', url2: "1_1", add: true},
+        {id: 2, name: "he4", page_type: "", url1: '2', url2: "2_1", add: true},
+        {id: 3, name: "he5",page_type: "", url1: '3', url2: "3_1", add: true},
+        {id: 4, name: "he6", page_type: "",url1: '4', url2: "4_1", add: true},
+        {id: 5, name: "he7", page_type: "",url1: '5', url2: "5_1", add: true},
+        {id: 6, name: "he8", page_type: "",url1: '6', url2: "6_1", add: true},
+        {id: 7, name: "he9", page_type: "",url1: '7', url2: "7_1", add: true},
+        {id: 8, name: "he2", page_type: "",url1: '8', url2: "8_1", add: true},
+        {id: 9, name: "SCADA1", page_type: "",url1: '9', url2: "9_1", add: true},
+        {id: 10, name: "SortableJS", page_type: "chrome",url1: '10', url2: "10_1", add: true},
+        {id: 11, name: "he1", page_type: "",url1: '11', url2: "11_1", add: true},
+        {id: 12, name: "he10", page_type: "",url1: '12', url2: "12_1", add: true},
     ])
-     // 显示屏列表
-    //  const [video_list, setVideo_list] = useState([
-    //     {id: 1, name: "屏1",arrs:[]},
-    //     {id: 2, name: "屏2",arrs:[]},
-    //     {id: 3, name: "屏3",arrs:[]},
-    //     {id: 4, name: "屏4",arrs:[]},
-    //  ])
     // 显示屏左侧图标列表1
     function change_page1(id1, item){
         // var arr = arrs(id1);
@@ -133,22 +134,6 @@ export default function Home(props){
         })
         setVideo_list(arrs);
     }
-    // 返回查找的数组
-    // function arrs (id){
-    //     let arr = [];
-    //     id == 1 ? arr = _.cloneDeep(img_arr1) : '';
-    //     id == 2 ? arr = _.cloneDeep(img_arr2) : '';
-    //     id == 3 ? arr = _.cloneDeep(img_arr3) : '';
-    //     id == 4 ? arr = _.cloneDeep(img_arr4) : '';
-    //     return arr;
-    // }
-    // 设置指定的数组
-    // function set_arrs(id,arr1){
-    //     id == 1 ? setImg_arr1(arr1) : '';
-    //     id == 2 ? setImg_arr2(arr1) : '';
-    //     id == 3 ? setImg_arr3(arr1) : '';
-    //     id == 4 ? setImg_arr4(arr1) : '';
-    // }
     // 拖拽添加
     function add_item(event,id){
         const list1 = _.clone(video_list);
@@ -159,8 +144,8 @@ export default function Home(props){
                 touch_x> item.left && touch_x < item.right && 
                 touch_y> item.top && touch_y < item.bottom
             ){
-                console.log(item)
                 const target_id = event.target.getAttribute("id");
+                console.log(event.target)
                 // 如果是同一个屏中拖拽，那么就中止
                 if(item.id == id){ return}
                 // 如果不是同一个屏拖拽就继续
@@ -407,14 +392,23 @@ export default function Home(props){
                 return (
                 <div className='swiper-no-swiping' id={items.id} onTouchEnd={add_item} key={items.id} 
                 style={
-                    items.add ? { backgroundImage: "url('/"+items.url1+".png')"} 
-                    : { 
-                        backgroundImage: "url('/"+items.url1+".png')",
-                        pointerEvents: items.add ? "" : "none",
-                        opacity: items.add ? 0 : 0.5
-                    }
+                    items.add ? {} 
+                    : { pointerEvents: items.add ? "" : "none"}
                 }
-                ></div>
+                >
+                    <div
+                    className="footer_img swiper-no-swiping"
+                    id={items.id}
+                      style={
+                        items.add ? { backgroundImage: "url('/a"+items.url2+".png')"} 
+                        : { 
+                            backgroundImage: "url('/a"+items.url1+".png')",
+                            pointerEvents: items.add ? "" : "none",
+                            opacity: items.add ? 0 : 0.5
+                        }
+                    }
+                    ></div>
+                </div>
                 )
             })
             }

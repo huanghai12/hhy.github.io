@@ -7,7 +7,7 @@ const instance = axios.create({
   });
   instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
   // 环境切换process.env.NODE_ENV
-  instance.defaults.baseURL = "http://192.168.16.115:3000";
+  instance.defaults.baseURL = "http://192.168.16.104:3000";
   
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {

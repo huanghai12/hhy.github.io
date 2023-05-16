@@ -6,18 +6,31 @@
     width: 100%;
 }
 .con_footer>div{
-    width: 44.76rem;
+    /* width: 44.76rem; */
     height: 8.5rem;
     display: flex;
     justify-content: space-between;
+    /* justify-content: center; */
+    /* flex-wrap: wrap; */
 }
 .con_footer>div>div{
     width: 8.7rem;
     height: 8.68rem;
     background-size: 100% 100%;
-    
+    margin-right: 2rem;
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0rem 0rem 0rem 0rem rgba(25,76,114,0.72);
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-         
+.footer_img{
+    width: 80%;
+    height: 80%;
+    background-size: 100% 100%;
+    margin: 1rem;
+}        
 .con_body{
     position: relative;
     height: calc(100%);

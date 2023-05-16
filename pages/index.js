@@ -1,13 +1,14 @@
 import { useEffect, useState,useRef } from 'react';
 import Home from '../components/home';
 import Funs from '../components/fun';
+import Detail from '../components/detail';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import {  Scrollbar } from "swiper";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import Tips from '../components/tip'
-export default function IndexPage({Cookies}) {
+import Tips from '../components/tip';
+export default function IndexPage() {
   const ref = useRef(null);
    const [video_list, setVideo_list] = useState([
     {id: 1, name: "屏1",arrs:[]},
@@ -40,7 +41,9 @@ export default function IndexPage({Cookies}) {
         <SwiperSlide>
           <Funs ></Funs>
         </SwiperSlide>
-      
+        <SwiperSlide>
+          <Detail ></Detail>
+        </SwiperSlide>
       </Swiper >
     </div>
   );
