@@ -1667,11 +1667,6 @@ jose@^4.11.4, jose@^4.14.1:
   resolved "https://registry.npmjs.org/jose/-/jose-4.14.4.tgz"
   integrity sha512-j8GhLiKmUAh+dsFXlX1aJCbt5KMibuKb+d7j1JaOJG6s2UjX1PQlW+OKB/sD4a/5ZYF4RcmYmLSndOoU3Lt/3g==
 
-jquery@^3.6.4:
-  version "3.6.4"
-  resolved "https://registry.npmjs.org/jquery/-/jquery-3.6.4.tgz"
-  integrity sha512-v28EW9DWDFpzcD9O5iyJXg3R3+q+mET5JhnjJzQUZMHOv67bpSIHq81GEYpPNZHG+XXHsfSme3nxp/hndKEcsQ==
-
 js-cookie@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npmjs.org/js-cookie/-/js-cookie-3.0.4.tgz"

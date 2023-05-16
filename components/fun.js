@@ -13,14 +13,20 @@ export default function Funs(props){
     const [around1,setAround1] = useState({id: 1,name:"SortableJS",page_type: "chrome",url:"http://sortablejs.github.io/Sortable/"})
     function arounds_open(){
         const obj = _.cloneDeep(around1);
+        console.log(11111)
         around_open(obj).then(res => {
-            console.log(res)
+            console.log(res.data.data)
+            const data = res.data.data;
+            if(data){
+                setAround1(data);
+            }
         }).catch(err => {
 
         })
     }
     // 停止环视功能
     function arounds_stop(){
+        const obj = _.cloneDeep(around1);
         around_stop(obj).then(res => {
             console.log(res)
         }).catch(err => {
@@ -32,6 +38,7 @@ export default function Funs(props){
             <div className="funs_page">
                 <img className='swiper-no-swiping' onClick={stops} src="/stop.png" alt="" />
                 <img className='swiper-no-swiping' onClick={arounds_open} src="/stop.png" alt="" />
+                <img className='swiper-no-swiping' onClick={arounds_stop} src="/stop.png" alt="" />
             </div>
         </div>
     )
