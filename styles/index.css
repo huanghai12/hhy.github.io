@@ -1,6 +1,7 @@
 html,body,#root,div,p{
     padding: 0;
     margin: 0;
+    color: #FFF;
 }
 @media screen and (min-width: 768px) {
     html,body,#root{

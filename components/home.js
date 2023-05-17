@@ -26,7 +26,6 @@ export default function Home(props){
     ])
     // 显示屏左侧图标列表1
     function change_page1(id1, item){
-        // var arr = arrs(id1);
         const arrs = _.cloneDeep(video_list)
         var arr = arrs[id1 - 1].arrs;
         const id2 = item.id;
@@ -45,7 +44,6 @@ export default function Home(props){
             }
         });
         arr = change_level(id2,arr);//层级改变
-        // set_arrs(id1,arr);
         setVideo_list(arrs);
         hide_icon(id1,arr);//编辑图标的显示和隐藏
     }
@@ -101,15 +99,11 @@ export default function Home(props){
                 close_arr.splice(index,1);
                 open_add(item.id,"del");
                 minimize_fun(item);
-               
-                // item.maxs = false;
                 return;
             }
         });
-        // hide_app(items.id,close_arr);
         hide_icon(items.id,close_arr)
         setVideo_list(arrs);
-        // set_arrs(items.id,close_arr);
     }
     // 页面展开事件
     useEffect(()=>{
@@ -123,11 +117,9 @@ export default function Home(props){
         if(start_click !=  0 &&  now_click - start_click < 1000){return}
         start_click = now_click;
         // 事件切换
-        // let arr = arrs(id);
         const arrs = _.cloneDeep(video_list);
         let arr = arrs[id - 1].arrs;
         arr.map((items)=>{
-            console.log(items)
             if(items.select == true && items.maxs == false){
                 el_item.setAttribute("src","/max.png");
                 maximize_fun(items,id);
@@ -154,7 +146,6 @@ export default function Home(props){
                 // 如果是同一个屏中拖拽，那么就中止
                 if(item.id == id){ return}
                 // 如果不是同一个屏拖拽就继续
-                // let arr1 = arrs(item.id);
                 let arr1 = item.arrs;
                 arr1.map((item1,index1)=>{
                     if(item1.id == target_id){
@@ -173,7 +164,6 @@ export default function Home(props){
                         }
                     })
                     list2 = change_level(id,list2);//层级改变
-                    // set_arrs(id,list2);
                     setVideo_list(list2)
                     hide_icon(id,list2);//图标
                 }
@@ -207,7 +197,6 @@ export default function Home(props){
                 item.select = false;
                 item.level = -1;
                 minimize_fun(item);
-                // item.maxs = false; 
             }else if(item.level > open_nums && item.select != true){
                 open_nums = item.level;
                 open_index = index;
@@ -218,7 +207,6 @@ export default function Home(props){
             change_icon(arr1[open_index],id);
         }
         setVideo_list(arrs);
-        // set_arrs(id,arr1);
         hide_icon(id,arr1);
     }
     // 显示和隐藏右侧的三个操作符 （编辑图标的显示和隐藏）
@@ -300,7 +288,6 @@ export default function Home(props){
             const arr = _.cloneDeep(img_arr);
             all_status({arr: arr,str1: str1}).then(res => {
                 const data = res.data.data;
-                console.log(data)
                 const arrs = _.cloneDeep(video_list);
                 if(!data){ return }
                 data.map((element)=>{

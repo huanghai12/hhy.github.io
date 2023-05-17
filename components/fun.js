@@ -13,7 +13,6 @@ export default function Funs(props){
     const [around1,setAround1] = useState({id: 1,name:"SortableJS",page_type: "chrome",url:"http://sortablejs.github.io/Sortable/"})
     function arounds_open(){
         const obj = _.cloneDeep(around1);
-        console.log(11111)
         around_open(obj).then(res => {
             console.log(res.data.data)
             const data = res.data.data;
@@ -36,9 +35,15 @@ export default function Funs(props){
     return (
         <div className='funs_box'>
             <div className="funs_page">
-                <img className='swiper-no-swiping' onClick={stops} src="/stop.png" alt="" />
+                <div className='funs_one'>
+                    <img className='swiper-no-swiping' onClick={stops} src="/stop.png" alt="" />
+                    <div>
+                        <p>急停</p>
+                    </div>
+                </div>
+                {/* <img className='swiper-no-swiping' onClick={stops} src="/stop.png" alt="" />
                 <img className='swiper-no-swiping' onClick={arounds_open} src="/stop.png" alt="" />
-                <img className='swiper-no-swiping' onClick={arounds_stop} src="/stop.png" alt="" />
+                <img className='swiper-no-swiping' onClick={arounds_stop} src="/stop.png" alt="" /> */}
             </div>
         </div>
     )

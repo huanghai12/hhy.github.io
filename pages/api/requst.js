@@ -90,10 +90,10 @@ export function around_stop(obj){
     return instance.post(url,params);
 }
 // 状态查询
-export function all_status(arr,str1){
+export function all_status(arr){
     let url = '';
     // 页面第一次加载时查询状态
-    if(str1 == "start"){ 
+    if(arr.str1 == "start"){ 
         url = "screen/all_status_start";
         arr = [];
     }else{

@@ -15,8 +15,24 @@
     display: flex;
     justify-content: center;
 }
-.funs_page>img{
+.funs_page>div{
+    width: 21.02rem;
+    height: 15.05rem;
+    background: rgba(255,255,255,0.12);
+    border: 0.08px solid #5E6780;
+    box-shadow: 0rem 1rem 2rem 0rem rgba(0,0,0,0.12);
+    border-radius: 0.83rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    /* line-height: 23.05rem; */
+}
+.funs_one>img{
     width: 6.92rem;
     height: 6.92rem;
-    margin-right: 5rem;
+}
+.funs_one>div{
+    width: 100%;
 }
