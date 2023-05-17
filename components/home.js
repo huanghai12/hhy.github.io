@@ -8,7 +8,6 @@ const { useEffect, useState } = require('react');
 
 let start_click = 0;
 export default function Home(props){
-   
     const video_list = props.video_list, setVideo_list = props.setVideo_list;
     // 页脚切换事件
     const [img_arr, setImg_arr] = useState( [
@@ -61,10 +60,11 @@ export default function Home(props){
     }
     const [clone_id, setClone_id] = useState(0);
     // 初始页面
+    const [is_update, setIs_update] = useState(1);
     useEffect(()=>{
         (async ()=>{
               // 获取显示屏位置
-            const screens = await all_status1();
+            const screens = await all_status1("start");
             const list1 = document.getElementsByClassName("video_page");
             const start_el = document.getElementsByClassName("carousel")[0];
             const start_top =  start_el.offsetTop;
@@ -79,7 +79,13 @@ export default function Home(props){
             }
             setVideo_list(screens);
         })()
-      
+        // 实时更新页面状态
+        setInterval(async () => {
+            if(is_update == 1){
+                const screens = await all_status1([]);
+                setVideo_list(screens);
+            }
+        }, 2000)
     },[]);
     // 删除显示屏中的元素
     const del_clone = (items) => {
@@ -145,7 +151,6 @@ export default function Home(props){
                 touch_y> item.top && touch_y < item.bottom
             ){
                 const target_id = event.target.getAttribute("id");
-                console.log(event.target)
                 // 如果是同一个屏中拖拽，那么就中止
                 if(item.id == id){ return}
                 // 如果不是同一个屏拖拽就继续
@@ -290,13 +295,12 @@ export default function Home(props){
         setImg_arr(arr);
     }
     // 查询所有app的状态
-    function all_status1(){
+    function all_status1(str1){
         return new Promise((resolve, reject) => {
             const arr = _.cloneDeep(img_arr);
-            all_status({arr:arr}).then(res => {
+            all_status({arr: arr,str1: str1}).then(res => {
                 const data = res.data.data;
                 const arrs = _.cloneDeep(video_list);
-                console.log(res);
                 if(!data){ return }
                 data.map((element)=>{
                     // 状态
@@ -322,7 +326,6 @@ export default function Home(props){
                 setImg_arr(data);
             }) 
         })
-        
     }
     return (
          <div className='con_body'>

@@ -90,8 +90,16 @@ export function around_stop(obj){
     return instance.post(url,params);
 }
 // 状态查询
-export function all_status(arr){
-    const url = "screen/all_status";
+export function all_status(arr,str1){
+    let url = '';
+    // 页面第一次加载时查询状态
+    if(str1 == "start"){ 
+        url = "screen/all_status_start";
+    }else{
+        url = "screen/all_status";
+    }
     const params = arr;
     return instance.post(url,params);
 }
+
+
