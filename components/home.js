@@ -82,8 +82,8 @@ export default function Home(props){
         // 实时更新页面状态
         setInterval(async () => {
             if(is_update == 1){
-                const screens = await all_status1([]);
-                setVideo_list(screens);
+                // const screens = await all_status1();
+                // setVideo_list(screens);
             }
         }, 2000)
     },[]);
@@ -300,6 +300,7 @@ export default function Home(props){
             const arr = _.cloneDeep(img_arr);
             all_status({arr: arr,str1: str1}).then(res => {
                 const data = res.data.data;
+                console.log(data)
                 const arrs = _.cloneDeep(video_list);
                 if(!data){ return }
                 data.map((element)=>{

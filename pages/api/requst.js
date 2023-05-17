@@ -95,6 +95,7 @@ export function all_status(arr,str1){
     // 页面第一次加载时查询状态
     if(str1 == "start"){ 
         url = "screen/all_status_start";
+        arr = [];
     }else{
         url = "screen/all_status";
     }
