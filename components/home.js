@@ -35,12 +35,12 @@ export default function Home(props){
             if(items1.id == id2 && items1.select == false){
                 items1.select = true;
                 items1.level = arr.length + 1;
-                if(items1.page_type != "chrome"){
-                    items1.maxs = true;
-                    change_icon(items1,id1);//展开图标的切换
-                }
+                // if(items1.page_type != "chrome"){
+                //     items1.maxs = true;
+                //     change_icon(items1,id1);//展开图标的切换
+                // }
                 normalizes_fun(items1,id1);
-                front1_fun(items1.hwnd);
+                // front1_fun(items1.hwnd);
             }
         });
         arr = change_level(id2,arr);//层级改变
